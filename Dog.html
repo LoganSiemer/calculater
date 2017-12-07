@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var dog = {
+			'name':'baren',
+			'age': 2,
+			'color':'black',
+			'size':'large',
+			'barking': false,
+			'eating':false };
+
+		dog.startbarking = function() {
+			if(this.barking == false)
+			{
+				this.barking = true;
+				return "your dog has started barking";
+			}
+			else
+			{
+				return "your dog is allready barking";
+			}
+
+		}
+		dog.stopbarking = function() {
+			if(this.barking == true)
+			{
+				this.barking = false;
+				return "your dog has stopped barking";
+			}
+			else
+			{
+				return "your dog has allready stopped barking";
+			}
+             
+		};
+
+		dog.starteating = function() {
+			if(this.eating == false)
+			{
+				this.eating = true;
+				return "your dog has started eating";
+			}
+			else
+			{
+				return "your dog has allready started eating";
+			}
+		}
+		dog.stopeating = function() {
+			if(this.eating == true)
+			{
+				this.eating = false;
+				return "your dog has stopped eating";
+			}
+			else
+			{
+				return "your dog has allready stopped eating";
+			}
+		};
+
+	</script>
+</body>
+</html>
