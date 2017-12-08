@@ -3,10 +3,163 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    	* {
+    		padding:0px;
+    		margin:0px;
+    	}
+
+    	.value {
+            display: flex;
+    		text-align: center;
+    		border:solid 0.5px gray;
+    		border-bottom:solid 3px gray;
+    		width: 171px;
+    		height: 41px;
+		}
+
+    	section {
+    		display: flex;
+    		flex-wrap: wrap;
+    		flex-direction: row;
+    		justify-content: center;
+    		align-items: center;
+    	}
+
+    	input {
+    		padding:12px;
+    		border-radius: 0px;
+    	}
+
+    	section input {
+    		flex: 1;
+    		display: flex;
+    		justify-content: center;
+    		align-items: center;
+    		color: black;
+    	}
+
+    	.bg {
+    		background-color: lightgray;
+    		border-radius: 0px;
+    		margin: 2px;
+    		outline:none;
+    		transition: all 0.5s;
+    	}
+
+    	.bg:hover {
+    		border-radius: 20px;
+    		cursor:pointer;
+    		text-decoration: none;
+    	}
+
+    	.bg:active {
+    		transform: translateY(3px);
+    	}
+
+    	.input {
+    		display: flex;
+    		text-align: center;
+    		border:solid 0.5px gray;
+    		border-bottom:solid 3px gray;
+    		width: 171px;
+    		height: 41px;
+    	}
+    </style>
+    <script>
+    	var calculator = new Object();
+		calculator.add = function(x, y) {
+			return parseInt(x) + parseInt(y);
+		}
+		calculator.subtract = function(x, y) {
+			return parseInt(x) - parseInt(y);
+		}
+		calculator.divide = function(x, y) {
+			return parseInt(x) / parseInt(y);
+		}
+		calculator.multiply = function(x, y) {
+			return parseInt(x) * parseInt(y);
+		}
+		function init(){
+			var one = document.getElementById('1');
+			var two = document.getElementById('2');
+			var three = document.getElementById('3');
+			var four = document.getElementById('4');
+			var five = document.getElementById('5');
+			var six = document.getElementById('6');
+			var seven = document.getElementById('7');
+			var eight = document.getElementById('8');
+			var nine = document.getElementById('9');
+			var zero = document.getElementById('0');
+		}		
+		var calculate = function() {
+			console.dir(this);
+			
+			var x = document.querySelector("#x");
+			var y = document.querySelector("#y");
+			
+			var result;
+			if(this.id == "btnadd") {
+				result = calculator.add(x.value, y.value); 
+				console.log (result);
+			}
+			else if (this.id == "btnsub") {
+				result = calculator.subtract(x.value, y.value); 
+				console.log(result);
+			}
+			else if (this.id == "btnmul") {
+				result = calculator.multiply(x.value, y.value); 
+				console.log(result);
+			}
+			else if (this.id == "btndiv") {
+				result = calculator.divide(x.value, y.value); 
+				console.log(result);
+			}
+			var out = document.querySelector("#out");
+			out.value = result;
+		}
+    </script>
 </head>
-<body>
+<body style="border: solid gray 2px; width: 175px; margin:30px;">
+	<input type="text" id="x"  class="value" />
+	<input type="text" id="y"  class="value" />
+		<section style="background-color: darkorange;">
+			<input type="button" class="btn bg" id="1" value="1"></input>
+			<input type="button" class="btn bg" id="2" value="2"></input>
+			<input type="button" class="btn bg" id="3" value="3"></input>
+			<input type="button" class="btn bg" id="btnadd" value="+"></input>
+	    </section>
+	    <section style="background-color: darkorange;">
+			<input type="button" class="btn bg" id="4" value="4"></input>
+			<input type="button" class="btn bg" id="5" value="5"></input>
+			<input type="button" class="btn bg" id="6" value="6"></input>
+			<input type="button" class="btn bg" id="btnsub" value="-"></input>
+		</section>
+		<section style="background-color: darkorange;">
+			<input type="button" class="btn bg" id="7" value="7"></input>
+			<input type="button" class="btn bg" id="8" value="8"></input>
+			<input type="button" class="btn bg" id="9" value="9"></input>
+			<input type="button" class="btn bg" id="btnmul" value="*"></input>
+		</section>
+		<section style="background-color: darkorange;">
+			<input type="button" class="btn bg" id="." value="."></input>
+			<input type="button" class="btn bg" id="0" value="0"></input>
+			<input type="button" class="btn bg" id="btnequal" value="="></input>
+			<input type="button" class="btn bg" id="btndiv" value="/"></input>
+		</section>
+	<output id="out"/>	
 	<script>
-		
+        var btns = document.querySelectorAll(".btn");
+			console.log(btns);
+
+		for(i = 0;i<btns.length;i++) {
+			btns[i].addEventListener("click", calculate);
+		}
 	</script>
 </body>
 </html>
